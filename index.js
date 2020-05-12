@@ -9,7 +9,7 @@ function normalize(args) {
         Object.keys(process.env)
             .sort((x, y) => x.length < y.length) // sort by descending length to prevent partial replacement
             .forEach(key => {
-                const regex = new RegExp(`\\$${key}|%${key}%`, "ig");
+                const regex = new RegExp(`\\$${key}`, "ig");
                 const value = (process.env[key] == null) ? '' : process.env[key];
                 arg = arg.replace(regex, value);
             });
